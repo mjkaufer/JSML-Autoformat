@@ -5,7 +5,7 @@ class FormatArrayCommand(sublime_plugin.TextCommand):
 		if not is_JSML(self.view):
 			return
 
-		print("Hello Array")
+		# print("Hello Array")
 		self.view.insert(edit, self.view.sel()[0].begin(), "[\n")
 		FormatChildCommand.run(self, edit, True)
 		self.view.insert(edit, self.view.sel()[0].begin(), "]")
@@ -19,7 +19,7 @@ class FormatChildCommand(sublime_plugin.TextCommand):#todo - rather than always 
 		if not is_JSML(self.view):
 			return
 
-		print("Hello Child")
+		# print("Hello Child")
 		tabs = ""
 
 		if nest:
