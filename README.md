@@ -36,6 +36,7 @@ Note, these shortcuts work only on `.jsml` files, to avoid confusion.
 * Add settings so that users can use the commands on any file they choose, as opposed to just `.jsml`
 * Bug fixes
 * Sublime Text 2 Support
+* Implement linting of some sort
 * Global domination
 
 ## Contributing
