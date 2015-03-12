@@ -11,12 +11,10 @@ Use the keyboard command `ctrl-[` to create a new JSML array with one element, i
 
 ```JavaScript
 
-[
-	{
-		t: "p",
-		T: "dorem ipsum",
-	}
-]
+{
+	t: "p",
+	T: "dorem ipsum",
+}
 
 ```
 
