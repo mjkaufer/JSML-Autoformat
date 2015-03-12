@@ -5,43 +5,39 @@ class FormatArrayCommand(sublime_plugin.TextCommand):
 		if not is_JSML(self.view):
 			return
 
-		# print("Hello Array")
-		self.view.insert(edit, self.view.sel()[0].begin(), "[\n")
+		write(self.view, "[\n")
 		FormatChildCommand.run(self, edit, True)
-		self.view.insert(edit, self.view.sel()[0].begin(), "]")
+		write(self.view, "]")
 
-		# self.view.insert(edit, 0, "[")
-		# self.view.insert(edit, 0, "Hello, World!")
-		# Convert `[]`, when user types `[`, into [{t:"p",T:"dorem ipsum"}], formatted
 
-class FormatChildCommand(sublime_plugin.TextCommand):#todo - rather than always make autoformatted text, make sure the user is not putting the `{` after an `attributes` tag
-	def run(self, edit, nest=False):#if nest, we increase the tab count by 1 because the children are now nested in an array
+class FormatChildCommand(sublime_plugin.TextCommand):
+	def run(self, edit, nest=False):
 		if not is_JSML(self.view):
 			return
 
-		# print("Hello Child")
 		tabs = ""
+		end = ""
 
 		if nest:
-			tabs += "\t"
+			tabs = "\t"
+			end = "\n"
 
-		self.view.insert(edit, self.view.sel()[0].begin(), tabs + "{\n")
-		self.view.insert(edit, self.view.sel()[0].begin(), tabs + "\tt: \"p\",\n")
-		self.view.insert(edit, self.view.sel()[0].begin(), tabs + "\tT: \"dorem ipsum\",\n")
-		self.view.insert(edit, self.view.sel()[0].begin(), tabs + "}")
-
-		if nest:
-			self.view.insert(edit, self.view.sel()[0].begin(), "\n")
+		
+		write(self.view, tabs + "{\n")
+		write(self.view, tabs + "\tt: \"p\",\n")
+		write(self.view, tabs + "\tT: \"dorem ipsum\",\n")
+		write(self.view, tabs + "}" + end)
 
 
 def is_JSML(view):
 	filename = view.file_name();
 	
-	if not ".jsml" in filename.lower():
+	extension = ".jsml"
+
+	if not extension in filename.lower():
 		return False
 
-	return filename.lower().index(".jsml") == len(filename) - 5#ensure it's not part of the folder, etc., but rather the actual file extension
+	return filename.lower().index(extension) == len(filename) - len(extension)#ensure it's not part of the folder, etc., but rather the actual file extension
 
-		# self.view.insert(edit, 0, "{")
-		# self.view.insert(edit, 0, "Hello, World!")
-		# Convert `{}`, when user types `{`, into {t:"p",T:"dorem ipsum"}, formatted
+def write(view, content):
+	view.run_command("insert_snippet", {"contents": content})
