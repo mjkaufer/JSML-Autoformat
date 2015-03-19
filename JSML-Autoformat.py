@@ -7,7 +7,7 @@ class FormatArrayCommand(sublime_plugin.TextCommand):
 
 		write(self.view, "[\n")
 		FormatChildCommand.run(self, edit, True)
-		write(self.view, "]")
+		write(self.view, "],")
 
 
 class FormatChildCommand(sublime_plugin.TextCommand):
@@ -26,7 +26,7 @@ class FormatChildCommand(sublime_plugin.TextCommand):
 		write(self.view, tabs + "{\n")
 		write(self.view, tabs + "\tt: \"p\",\n")
 		write(self.view, tabs + "\tT: \"dorem ipsum\",\n")
-		write(self.view, tabs + "}" + end)
+		write(self.view, tabs + "}," + end)
 
 
 def is_JSML(view):
