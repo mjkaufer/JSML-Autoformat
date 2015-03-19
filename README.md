@@ -15,8 +15,8 @@ Use the keyboard command `ctrl-[` to create a new JSML array with one element, i
 	{
 		t: "p",
 		T: "dorem ipsum",
-	}
-]
+	},
+],
 
 ```
 
@@ -27,7 +27,7 @@ Use the keyboard command `ctrl-{` to create a new JSML element, i.e.
 {
 	t: "p",
 	T: "dorem ipsum",
-}
+},
 
 ```
 
