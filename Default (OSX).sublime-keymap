@@ -1,8 +1,8 @@
 [
     { 
-        "keys": ["{"], "command": "format_child"
+        "keys": ["ctrl+shift+["], "command": "format_child"
     },
     { 
-        "keys": ["["], "command": "format_array"
+        "keys": ["ctrl+["], "command": "format_array"
     }
 ]
